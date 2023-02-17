@@ -1,0 +1,17 @@
+.grid {
+  --grid-length: 16;
+  --box-length: 50px;
+  --border-thickness: 1px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--grid-length), var(--box-length));
+  grid-template-rows: repeat(var(--grid-length), var(--box-length));
+  gap: var(--border-thickness);
+  padding: var(--border-thickness);
+  width: fit-content;
+  background-color: black;
+}
+
+.box {
+  background-color: white;
+}
