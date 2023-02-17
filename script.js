@@ -1,26 +1,35 @@
 const grid = document.querySelector(".grid");
 
-function drawGrid(sideLength) {
+function generateGrid(sideLength) {
   grid.style.setProperty("--grid-length", sideLength);
   
+  const boxes = [];
   const area = sideLength * sideLength;
+
   for (let i = 0; i < area; i++) {
     const box = document.createElement("div");
-    box.addEventListener("mouseover", fillBox);
+    box.addEventListener("mouseover", draw);
     box.classList.add("box");
-    grid.appendChild(box);
+    boxes.push(box);
   }
+
+  grid.replaceChildren(...boxes);
 }
 
-drawGrid(16);
+function setGridSize() {
+  generateGrid(prompt("Grid Length:"));
+}
 
-function fillBox() {
+function draw() {
   this.classList.add("filled");
 }
-
-const clearButton = document.querySelector("button");
-clearButton.addEventListener("click", clearGrid);
 
 function clearGrid() {
   grid.childNodes.forEach((box) => box.classList.remove("filled"));
 }
+
+const generateGridButton = document.querySelector("button#generate-grid");
+generateGridButton.addEventListener("click", setGridSize);
+
+const clearButton = document.querySelector("button#clear-grid");
+clearButton.addEventListener("click", clearGrid);
