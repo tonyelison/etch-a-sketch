@@ -1,5 +1,5 @@
 .grid {
-  --grid-length: 16;
+  --grid-length: 0;
   --box-length: 50px;
   --border-thickness: 1px;
 
@@ -14,4 +14,8 @@
 
 .box {
   background-color: white;
+}
+
+.filled {
+  background-color: blue;
 }
