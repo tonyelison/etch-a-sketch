@@ -1,14 +1,15 @@
 .grid {
   --grid-length: 0;
-  --box-length: 50px;
+  --grid-width: 800px;
   --border-thickness: 1px;
+  --box-width: calc((var(--grid-width) / var(--grid-length)));
 
   display: grid;
-  grid-template-columns: repeat(var(--grid-length), var(--box-length));
-  grid-template-rows: repeat(var(--grid-length), var(--box-length));
+  grid-template-columns: repeat(var(--grid-length), 1fr);
+  grid-template-rows: repeat(var(--grid-length), var(--box-width));
   gap: var(--border-thickness);
   padding: var(--border-thickness);
-  width: fit-content;
+  width: var(--grid-width);
   background-color: black;
 }
 
