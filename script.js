@@ -9,8 +9,9 @@ function generateGrid(sideLength) {
     return;
   }
 
-  if (sideLength < 1 || sideLength > 100) {
-    return setGridSize("Invalid length.");
+  if (isNaN(sideLength) || sideLength < 1 || sideLength > 100) {
+    setGridSize("Invalid length.");
+    return;
   }
 
   if (parseInt(sideLength) === 0) {
