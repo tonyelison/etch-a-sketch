@@ -5,8 +5,12 @@ let rainbowMode = false;
 let gridLines = true;
 
 function generateGrid(sideLength) {
-  if (sideLength === null || sideLength === undefined) {
+  if (sideLength === null || sideLength === undefined || sideLength === "") {
     return;
+  }
+
+  if (sideLength < 1 || sideLength > 100) {
+    return setGridSize("Invalid length.");
   }
 
   if (parseInt(sideLength) === 0) {
@@ -35,8 +39,9 @@ function generateGrid(sideLength) {
   grid.replaceChildren(...boxes);
 }
 
-function setGridSize() {
-  generateGrid(prompt("Grid Length:"));
+function setGridSize(errorMsg) {
+  const promptMsg = (errorMsg ? `ERROR: ${errorMsg}\n` : "") + "Please enter a grid length between 1 and 100:"
+  generateGrid(prompt(promptMsg));
 }
 
 function draw(e) {
@@ -63,7 +68,7 @@ function clearGrid() {
 generateGrid(32);
 
 const generateGridButton = document.querySelector("button#generate-grid");
-generateGridButton.addEventListener("click", setGridSize);
+generateGridButton.addEventListener("click", () => setGridSize());
 
 const clearButton = document.querySelector("button#clear-grid");
 clearButton.addEventListener("click", clearGrid);
