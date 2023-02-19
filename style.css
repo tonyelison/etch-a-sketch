@@ -4,7 +4,6 @@ body {
 
 .grid {
   --grid-width: 800px;
-  --box-fill-color: black;
   --box-border: 1px solid #6a6a6a;
   --box-width: calc((var(--grid-width)) / var(--grid-length));
 
@@ -23,5 +22,6 @@ body {
 }
 
 .filled {
-  background-color: var(--box-fill-color);
+  --fill-color: black;
+  background-color: var(--fill-color);
 }

@@ -43,7 +43,7 @@ function draw(e) {
     box.classList.add("filled");
     if (randomFillColor) {
       const hexValue = Math.floor(Math.random()*16777215).toString(16);
-      box.style.backgroundColor = `#${hexValue}`;
+      box.style.setProperty("--fill-color", `#${hexValue}`);
     }
   }
 }
