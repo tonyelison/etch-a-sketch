@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+let mouseDown = false;
 
 function generateGrid(sideLength) {
   if (sideLength === null || sideLength === undefined) {
@@ -18,7 +19,12 @@ function generateGrid(sideLength) {
 
   for (let i = 0; i < area; i++) {
     const box = document.createElement("div");
+    box.addEventListener("mousedown", (e) => {
+      mouseDown = true;
+      draw(e);
+    });
     box.addEventListener("mouseover", draw);
+    box.addEventListener("mouseup", () => mouseDown = false);
     box.classList.add("box");
     boxes.push(box);
   }
@@ -30,8 +36,10 @@ function setGridSize() {
   generateGrid(prompt("Grid Length:"));
 }
 
-function draw() {
-  this.classList.add("filled");
+function draw(e) {
+  if (mouseDown) {
+    e.target.classList.add("filled");
+  }
 }
 
 function clearGrid() {
