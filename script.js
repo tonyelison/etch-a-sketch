@@ -1,5 +1,6 @@
 const grid = document.querySelector(".grid");
 let mouseDown = false;
+let randomFillColor = false;
 
 function generateGrid(sideLength) {
   if (sideLength === null || sideLength === undefined) {
@@ -38,7 +39,12 @@ function setGridSize() {
 
 function draw(e) {
   if (mouseDown) {
-    e.target.classList.add("filled");
+    const box = e.target;
+    box.classList.add("filled");
+    if (randomFillColor) {
+      const hexValue = Math.floor(Math.random()*16777215).toString(16);
+      box.style.backgroundColor = `#${hexValue}`;
+    }
   }
 }
 
@@ -53,3 +59,6 @@ generateGridButton.addEventListener("click", setGridSize);
 
 const clearButton = document.querySelector("button#clear-grid");
 clearButton.addEventListener("click", clearGrid);
+
+const rainbowToggle = document.querySelector("button#rainbow-toggle");
+rainbowToggle.addEventListener("click", () => randomFillColor = !randomFillColor);
