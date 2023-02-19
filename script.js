@@ -1,6 +1,12 @@
 const grid = document.querySelector(".grid");
 
 function generateGrid(sideLength) {
+  if (parseInt(sideLength) === 0) {
+    grid.style.display = "none";
+    return;
+  }
+
+  grid.style.display = "grid";
   grid.style.setProperty("--grid-length", sideLength);
   
   const boxes = [];
