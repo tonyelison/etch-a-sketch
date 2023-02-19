@@ -10,12 +10,10 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--grid-length), var(--box-width));
   grid-template-rows: repeat(var(--grid-length), var(--box-width));
-  width: var(--grid-width);
-  height: var(--grid-width);
   border-top: var(--box-border);
   border-left: var(--box-border);
   margin-bottom: 20px;
-  cursor: url(./pencil.png), crosshair;
+  cursor: crosshair;
 }
 
 .box {

@@ -53,7 +53,10 @@ function draw(e) {
 }
 
 function clearGrid() {
-  grid.childNodes.forEach((box) => box.classList.remove("filled"));
+  grid.childNodes.forEach((box) => {
+    box.classList.remove("filled");
+    box.style.setProperty("--fill-color", null);
+  });
 }
 
 generateGrid(32);
