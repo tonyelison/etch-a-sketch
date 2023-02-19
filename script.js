@@ -50,14 +50,14 @@ function draw(e) {
     const box = e.target;
     box.classList.add("filled");
 
-    if (eraserMode) {
-      box.style.setProperty("--fill-color", "white");
-    } else if (rainbowMode) {
+    if (rainbowMode) {
       const hexValue = Math.floor(Math.random()*16777215).toString(16);
       box.style.setProperty("--fill-color", `#${hexValue}`);
-    } else {
-      box.style.setProperty("--fill-color", null);
+      return;
+    } else if (eraserMode) {
+      box.classList.remove("filled");
     }
+    box.style.setProperty("--fill-color", null);
   }
 }
 
@@ -99,7 +99,7 @@ function toggleGridLines() {
     grid.style.border = null;
   } else {
     grid.style.setProperty("--box-border", "none");
-    grid.style.border = "1px solid black";
+    grid.style.border = "1px solid #6a6a6a";
   }
 }
 
