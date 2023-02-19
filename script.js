@@ -54,6 +54,8 @@ function draw(e) {
     } else if (rainbowMode) {
       const hexValue = Math.floor(Math.random()*16777215).toString(16);
       box.style.setProperty("--fill-color", `#${hexValue}`);
+    } else {
+      box.style.setProperty("--fill-color", null);
     }
   }
 }
