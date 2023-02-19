@@ -1,21 +1,24 @@
-.grid {
-  --grid-length: 0;
-  --grid-width: 800px;
-  --border-thickness: 1px;
-  --box-width: calc((var(--grid-width) - calc(1px * (var(--grid-length) - 1))) / var(--grid-length));
+body {
+  box-sizing: border-box;
+}
 
-  display: none;
+.grid {
+  --grid-width: 800px;
+  --box-border: 1px solid black;
+  --box-width: calc((var(--grid-width)) / var(--grid-length));
+
+  display: grid;
   grid-template-columns: repeat(var(--grid-length), var(--box-width));
   grid-template-rows: repeat(var(--grid-length), var(--box-width));
-  gap: var(--border-thickness);
-  padding: var(--border-thickness);
   width: var(--grid-width);
   height: var(--grid-width);
-  background-color: black;
+  border-top: var(--box-border);
+  border-left: var(--box-border);
 }
 
 .box {
-  background-color: white;
+  border-bottom: var(--box-border);
+  border-right: var(--box-border);
 }
 
 .filled {

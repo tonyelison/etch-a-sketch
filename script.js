@@ -1,6 +1,10 @@
 const grid = document.querySelector(".grid");
 
 function generateGrid(sideLength) {
+  if (sideLength === null || sideLength === undefined) {
+    return;
+  }
+
   if (parseInt(sideLength) === 0) {
     grid.style.display = "none";
     return;
@@ -33,6 +37,8 @@ function draw() {
 function clearGrid() {
   grid.childNodes.forEach((box) => box.classList.remove("filled"));
 }
+
+generateGrid(32);
 
 const generateGridButton = document.querySelector("button#generate-grid");
 generateGridButton.addEventListener("click", setGridSize);
