@@ -2,6 +2,7 @@ const grid = document.querySelector(".grid");
 let mouseDown = false;
 let eraserMode = false;
 let rainbowMode = false;
+let gridLines = true;
 
 function generateGrid(sideLength) {
   if (sideLength === null || sideLength === undefined) {
@@ -83,8 +84,22 @@ function toggleRainbowMode() {
   rainbowToggle.classList.toggle("toggled");
 }
 
+function toggleGridLines() {
+  gridLines = !gridLines;
+  if (gridLines) {
+    grid.style.setProperty("--box-border", null);
+    grid.style.border = null;
+  } else {
+    grid.style.setProperty("--box-border", "none");
+    grid.style.border = "1px solid black";
+  }
+}
+
 const eraserToggle = document.querySelector("button#eraser-toggle");
 eraserToggle.addEventListener("click", toggleEraserMode);
 
 const rainbowToggle = document.querySelector("button#rainbow-toggle");
 rainbowToggle.addEventListener("click", toggleRainbowMode);
+
+const gridLineToggle = document.querySelector("button#gridline-toggle");
+gridLineToggle.addEventListener("click", toggleGridLines);
