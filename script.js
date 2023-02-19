@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid");
 let mouseDown = false;
-let randomFillColor = false;
+let eraserMode = false;
+let rainbowMode = false;
 
 function generateGrid(sideLength) {
   if (sideLength === null || sideLength === undefined) {
@@ -41,7 +42,10 @@ function draw(e) {
   if (mouseDown) {
     const box = e.target;
     box.classList.add("filled");
-    if (randomFillColor) {
+
+    if (eraserMode) {
+      box.style.setProperty("--fill-color", "white");
+    } else if (rainbowMode) {
       const hexValue = Math.floor(Math.random()*16777215).toString(16);
       box.style.setProperty("--fill-color", `#${hexValue}`);
     }
@@ -60,5 +64,22 @@ generateGridButton.addEventListener("click", setGridSize);
 const clearButton = document.querySelector("button#clear-grid");
 clearButton.addEventListener("click", clearGrid);
 
+function toggleEraserMode() {
+  eraserMode = !eraserMode;
+  if (rainbowMode && eraserMode) {
+    rainbowMode = false;
+  }
+}
+
+function toggleRainbowMode() {
+  rainbowMode = !rainbowMode;
+  if (eraserMode && rainbowMode) {
+    eraserMode = false;
+  }
+}
+
+const eraserToggle = document.querySelector("button#eraser-toggle");
+eraserToggle.addEventListener("click", toggleEraserMode);
+
 const rainbowToggle = document.querySelector("button#rainbow-toggle");
-rainbowToggle.addEventListener("click", () => randomFillColor = !randomFillColor);
+rainbowToggle.addEventListener("click", toggleRainbowMode);
