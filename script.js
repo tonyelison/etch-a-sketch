@@ -67,15 +67,17 @@ clearButton.addEventListener("click", clearGrid);
 function toggleEraserMode() {
   eraserMode = !eraserMode;
   if (rainbowMode && eraserMode) {
-    rainbowMode = false;
+    toggleRainbowMode();
   }
+  eraserToggle.classList.toggle("toggled");
 }
 
 function toggleRainbowMode() {
   rainbowMode = !rainbowMode;
   if (eraserMode && rainbowMode) {
-    eraserMode = false;
+    toggleEraserMode();
   }
+  rainbowToggle.classList.toggle("toggled");
 }
 
 const eraserToggle = document.querySelector("button#eraser-toggle");
